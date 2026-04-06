@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NGO Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="portal-root">
+    <!-- LEFT PANEL -->
+    <div class="panel-left">
+      <h1 class="panel-headline">Welcome to NGO Portal</h1>
+      <p class="panel-body">Login or register to access your account and manage activities.</p>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="panel-right">
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button id="tab-login" class="auth-tab active" onclick="switchTab('login')">Login</button>
+        <button id="tab-register" class="auth-tab" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="form-login" class="auth-form">
+        <div class="field-group">
+          <input id="l-user" type="text" placeholder="Username or Email">
+        </div>
+        <div class="field-group">
+          <input id="l-pass" type="password" placeholder="Password">
+        </div>
+        <button type="button" class="btn-primary" onclick="doLogin()">Login</button>
+        <p><a href="javascript:void(0)" onclick="openForgot()">Forgot Password?</a></p>
+      </form>
+
+      <!-- Register Form -->
+      <div id="form-register" class="auth-form hidden">
+        <!-- Step 1 -->
+        <div id="reg-step-1" class="reg-step">
+          <div class="field-group">
+            <input id="r-email" type="email" placeholder="Email">
+          </div>
+          <button type="button" class="btn-primary" onclick="regStep1Next()">Next</button>
+        </div>
+
+        <!-- Step 2 (OTP) -->
+        <div id="reg-step-2" class="reg-step hidden">
+          <p>Enter the OTP sent to your email</p>
+          <div class="otp-group">
+            <input id="o1" class="otp-box" maxlength="1">
+            <input id="o2" class="otp-box" maxlength="1">
+            <input id="o3" class="otp-box" maxlength="1">
+            <input id="o4" class="otp-box" maxlength="1">
+            <input id="o5" class="otp-box" maxlength="1">
+            <input id="o6" class="otp-box" maxlength="1">
+          </div>
+          <p>Demo OTP: <span id="otp-demo-value"></span></p>
+          <button type="button" class="btn-primary" onclick="regStep2Next()">Verify</button>
+          <button type="button" onclick="regGoBack(1)">Back</button>
+        </div>
+
+        <!-- Step 3 (Password) -->
+        <div id="reg-step-3" class="reg-step hidden">
+          <div class="field-group">
+            <input id="r-pass" type="password" placeholder="Password">
+          </div>
+          <div class="field-group">
+            <input id="r-pass2" type="password" placeholder="Confirm Password">
+          </div>
+          <button type="button" class="btn-primary" onclick="regComplete()">Complete Registration</button>
+          <button type="button" onclick="regGoBack(2)">Back</button>
+        </div>
+
+        <!-- Success -->
+        <div id="reg-success" class="reg-step hidden">
+          <p>Registration successful!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div id="forgot-modal" class="hidden" onclick="closeForgot(event)">
+    <div class="modal-content">
+      <h2>Reset Password</h2>
+      <div class="field-group">
+        <input type="email" placeholder="Enter your email">
+      </div>
+      <button type="button" class="btn-primary" onclick="doForgot()">Send Reset Link</button>
+    </div>
+  </div>
+
+  <!-- AI Chat -->
+  <div class="ai-chat-bubble" onclick="toggleChat()">💬</div>
+  <div id="ai-chat-panel" class="ai-chat-panel hidden">
+    <div id="chat-messages" class="chat-messages"></div>
+    <input id="chat-input" type="text" placeholder="Type a message...">
+    <button onclick="sendChat()">Send</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
