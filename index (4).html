@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaGrant — NGO Management Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══ BACKGROUND ═══ -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-shape bs-1"></div>
+    <div class="bg-shape bs-2"></div>
+    <div class="bg-shape bs-3"></div>
+  </div>
+
+  <!-- ═══ PORTAL ROOT ═══ -->
+  <div class="portal">
+
+    <!-- ══ LEFT PANEL ══ -->
+    <aside class="left-panel" aria-label="Portal information">
+      <header class="lp-brand">
+        <div class="lp-logo">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M18 3L33 11.5V24.5L18 33L3 24.5V11.5L18 3Z" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M18 9L27 14.5V20.5L18 26L9 20.5V14.5L18 9Z" fill="currentColor" opacity=".18"/>
+            <circle cx="18" cy="18" r="2.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <div class="lp-name">NexaGrant</div>
+          <div class="lp-tagline">NGO Management Portal</div>
+        </div>
+      </header>
+
+      <div class="lp-body">
+        <h1 class="lp-headline">Empowering<br/>Organisations<br/>That <em>Matter.</em></h1>
+        <p class="lp-desc">A secure, unified platform for registered NGOs to manage operations, reporting, compliance, and grant tracking — all from one place.</p>
+
+        <ul class="lp-features">
+          <li class="lp-feat">
+            <span class="lp-feat-icon">
+              <svg viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <span class="lp-feat-text">
+              <strong>Centralised Dashboard</strong>
+              Monitor all activities at a glance
+            </span>
+          </li>
+          <li class="lp-feat">
+            <span class="lp-feat-icon">
+              <svg viewBox="0 0 22 22" fill="none"><path d="M11 2L20 6.5V11C20 15.5 16 19.5 11 21C6 19.5 2 15.5 2 11V6.5L11 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 11l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="lp-feat-text">
+              <strong>Compliance Ready</strong>
+              Stay audit-ready at all times
+            </span>
+          </li>
+          <li class="lp-feat">
+            <span class="lp-feat-icon">
+              <svg viewBox="0 0 22 22" fill="none"><path d="M3 17V9l8-5 8 5v8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="8" y="13" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M11 13v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <span class="lp-feat-text">
+              <strong>Grant Management</strong>
+              Track funding cycles and reports
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <footer class="lp-footer">
+        Trusted by <strong>3,400+</strong> registered organisations across India
+      </footer>
+    </aside>
+
+    <!-- ══ RIGHT PANEL ══ -->
+    <main class="right-panel" id="right-panel">
+
+      <!-- TAB SWITCHER -->
+      <div class="tabs" role="tablist" aria-label="Authentication">
+        <button class="tab tab-active" id="tab-signin" role="tab" aria-selected="true" aria-controls="form-signin" onclick="switchTab('signin')">Sign In</button>
+        <button class="tab" id="tab-register" role="tab" aria-selected="false" aria-controls="form-register" onclick="switchTab('register')">Register</button>
+        <div class="tab-track" id="tab-track"></div>
+      </div>
+
+      <!-- ════ SIGN IN FORM ════ -->
+      <section class="auth-section" id="form-signin" role="tabpanel" aria-labelledby="tab-signin">
+
+        <div class="form-head">
+          <h2>Welcome back</h2>
+          <p>Sign in to your organisation's account</p>
+        </div>
+
+        <div class="msg-box" id="signin-msg" role="alert" aria-live="polite"></div>
+
+        <div class="field">
+          <label for="si-org">Organisation Name</label>
+          <div class="input-wrap">
+            <span class="inp-icon">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M2 17V8l8-5 8 5v9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="7" y="12" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <input type="text" id="si-org" class="inp" placeholder="e.g. Green Earth Foundation" autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="si-user">Username</label>
+          <div class="input-wrap">
+            <span class="inp-icon">
+              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 18c0-3.31 3.13-6 7-6s7 2.69 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <input type="text" id="si-user" class="inp" placeholder="your_username" autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-row">
+            <label for="si-pass">Password</label>
+            <button type="button" class="text-btn" onclick="openForgot()">Forgot password?</button>
+          </div>
+          <div class="input-wrap">
+            <span class="inp-icon">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r="1.5" fill="currentColor"/></svg>
+            </span>
+            <input type="password" id="si-pass" class="inp inp-eye" placeholder="••••••••" autocomplete="current-password" />
+            <button type="button" class="eye-btn" onclick="togglePwd('si-pass',this)" aria-label="Show or hide password">
+              <svg class="ic-eye-show" viewBox="0 0 20 20" fill="none"><path d="M1 10s3.6-7 9-7 9 7 9 7-3.6 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg class="ic-eye-hide" viewBox="0 0 20 20" fill="none" style="display:none"><path d="M13.87 13.87A8.5 8.5 0 0 1 10 15c-5.4 0-9-5-9-5a16.5 16.5 0 0 1 5.13-4.87M7.24 3.76A8.3 8.3 0 0 1 10 3c5.4 0 9 7 9 7a16.7 16.7 0 0 1-2.04 2.96M1 1l18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <label class="check-label">
+          <input type="checkbox" id="si-remember" />
+          <span class="check-box"></span>
+          <span>Remember this device</span>
+        </label>
+
+        <button type="button" class="btn-primary" onclick="doSignIn()">
+          <span>Sign In</span>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <p class="switch-note">New organisation? <a href="#" onclick="switchTab('register');return false;">Request access →</a></p>
+      </section>
+
+      <!-- ════ REGISTER FORM ════ -->
+      <section class="auth-section hidden" id="form-register" role="tabpanel" aria-labelledby="tab-register">
+
+        <!-- Step dots -->
+        <div class="step-bar" id="step-bar" aria-label="Registration steps">
+          <div class="step-node active" id="sn-1" data-label="Details">
+            <div class="step-circle"><span>1</span></div>
+            <div class="step-lbl">Details</div>
+          </div>
+          <div class="step-line" id="sl-1"></div>
+          <div class="step-node" id="sn-2" data-label="Verify">
+            <div class="step-circle"><span>2</span></div>
+            <div class="step-lbl">Verify</div>
+          </div>
+          <div class="step-line" id="sl-2"></div>
+          <div class="step-node" id="sn-3" data-label="Credentials">
+            <div class="step-circle"><span>3</span></div>
+            <div class="step-lbl">Credentials</div>
+          </div>
+        </div>
+
+        <!-- ── Step 1: Org details ── -->
+        <div class="reg-panel" id="rp-1">
+          <div class="form-head">
+            <h2>Register your NGO</h2>
+            <p>Step 1 of 3 — Organisation details</p>
+          </div>
+          <div class="msg-box" id="r1-msg" role="alert" aria-live="polite"></div>
+
+          <div class="field">
+            <label for="r-org">Organisation Name <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M2 17V8l8-5 8 5v9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="7" y="12" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <input type="text" id="r-org" class="inp" placeholder="Legal registered name of your NGO" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="r-regnum">Registration / CIN Number <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <input type="text" id="r-regnum" class="inp" placeholder="e.g. MH/2019/0012345" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="r-email">Official Email Address <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8l8 5 8-5" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <input type="text" id="r-email" class="inp" placeholder="admin@yourorg.org" autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="r-phone">Contact Number <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4.5 3h2.8l1.2 3.2-1.7 1.3A10 10 0 0 0 11 11.2l1.3-1.7L15.5 11v2.5a1 1 0 0 1-1 1C7.5 15 4 8.5 4 4.5a1 1 0 0 1 .5-.87l.05-.03z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+              <input type="tel" id="r-phone" class="inp" placeholder="+91 98765 43210" autocomplete="tel" />
+            </div>
+          </div>
+
+          <button type="button" class="btn-primary" onclick="step1Next()">
+            <span>Continue</span>
+            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- ── Step 2: OTP ── -->
+        <div class="reg-panel hidden" id="rp-2">
+          <div class="form-head">
+            <h2>Verify your email</h2>
+            <p id="otp-subtitle">Step 2 of 3 — Enter the OTP sent to your address</p>
+          </div>
+          <div class="msg-box" id="r2-msg" role="alert" aria-live="polite"></div>
+
+          <div class="otp-demo-box">
+            <span class="otp-demo-label">Demo OTP (for testing)</span>
+            <span class="otp-demo-code" id="otp-demo-code">––––––</span>
+          </div>
+
+          <div class="otp-row" role="group" aria-label="OTP input">
+            <input class="otp-input" type="text" inputmode="numeric" maxlength="1" id="oi-1" aria-label="Digit 1" />
+            <input class="otp-input" type="text" inputmode="numeric" maxlength="1" id="oi-2" aria-label="Digit 2" />
+            <input class="otp-input" type="text" inputmode="numeric" maxlength="1" id="oi-3" aria-label="Digit 3" />
+            <div class="otp-sep" aria-hidden="true">—</div>
+            <input class="otp-input" type="text" inputmode="numeric" maxlength="1" id="oi-4" aria-label="Digit 4" />
+            <input class="otp-input" type="text" inputmode="numeric" maxlength="1" id="oi-5" aria-label="Digit 5" />
+            <input class="otp-input" type="text" inputmode="numeric" maxlength="1" id="oi-6" aria-label="Digit 6" />
+          </div>
+
+          <div class="resend-area">
+            <span id="resend-timer" class="resend-timer"></span>
+            <button type="button" class="text-btn" id="resend-btn" onclick="resendOtp()" style="display:none">Resend OTP</button>
+          </div>
+
+          <button type="button" class="btn-primary" onclick="step2Next()">
+            <span>Verify &amp; Continue</span>
+            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="btn-ghost" onclick="goToStep(1)">← Back</button>
+        </div>
+
+        <!-- ── Step 3: Credentials ── -->
+        <div class="reg-panel hidden" id="rp-3">
+          <div class="form-head">
+            <h2>Create credentials</h2>
+            <p>Step 3 of 3 — Set your login username &amp; password</p>
+          </div>
+          <div class="msg-box" id="r3-msg" role="alert" aria-live="polite"></div>
+
+          <div class="field">
+            <label for="r-user">Username <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 18c0-3.31 3.13-6 7-6s7 2.69 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <input type="text" id="r-user" class="inp" placeholder="choose_a_username" autocomplete="username" />
+            </div>
+            <small class="field-hint">Lowercase letters, numbers and underscores only.</small>
+          </div>
+
+          <div class="field">
+            <label for="r-pass">Password <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r="1.5" fill="currentColor"/></svg></span>
+              <input type="password" id="r-pass" class="inp inp-eye" placeholder="Min. 8 characters" autocomplete="new-password" />
+              <button type="button" class="eye-btn" onclick="togglePwd('r-pass',this)" aria-label="Show or hide password">
+                <svg class="ic-eye-show" viewBox="0 0 20 20" fill="none"><path d="M1 10s3.6-7 9-7 9 7 9 7-3.6 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <svg class="ic-eye-hide" viewBox="0 0 20 20" fill="none" style="display:none"><path d="M13.87 13.87A8.5 8.5 0 0 1 10 15c-5.4 0-9-5-9-5a16.5 16.5 0 0 1 5.13-4.87M7.24 3.76A8.3 8.3 0 0 1 10 3c5.4 0 9 7 9 7a16.7 16.7 0 0 1-2.04 2.96M1 1l18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <div class="strength-track"><div class="strength-fill" id="strength-fill"></div></div>
+            <small class="strength-text" id="strength-text"></small>
+          </div>
+
+          <div class="field">
+            <label for="r-pass2">Confirm Password <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r="1.5" fill="currentColor"/></svg></span>
+              <input type="password" id="r-pass2" class="inp inp-eye" placeholder="Re-enter password" autocomplete="new-password" />
+              <button type="button" class="eye-btn" onclick="togglePwd('r-pass2',this)" aria-label="Show or hide password">
+                <svg class="ic-eye-show" viewBox="0 0 20 20" fill="none"><path d="M1 10s3.6-7 9-7 9 7 9 7-3.6 7-9 7-9-7-9-7z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <svg class="ic-eye-hide" viewBox="0 0 20 20" fill="none" style="display:none"><path d="M13.87 13.87A8.5 8.5 0 0 1 10 15c-5.4 0-9-5-9-5a16.5 16.5 0 0 1 5.13-4.87M7.24 3.76A8.3 8.3 0 0 1 10 3c5.4 0 9 7 9 7a16.7 16.7 0 0 1-2.04 2.96M1 1l18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <label class="check-label">
+            <input type="checkbox" id="r-terms" />
+            <span class="check-box"></span>
+            <span>I agree to the <a href="#" onclick="return false">Terms of Service</a> and <a href="#" onclick="return false">Privacy Policy</a></span>
+          </label>
+
+          <button type="button" class="btn-primary" onclick="step3Complete()">
+            <span>Create Account</span>
+            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="btn-ghost" onclick="goToStep(2)">← Back</button>
+        </div>
+
+        <!-- ── Success ── -->
+        <div class="reg-panel hidden" id="rp-success">
+          <div class="success-screen">
+            <div class="success-ring">
+              <svg viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2" opacity=".25"/>
+                <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2" stroke-dasharray="176" stroke-dashoffset="176" class="anim-circle"/>
+                <path d="M20 32l9 9 16-16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="44" stroke-dashoffset="44" class="anim-check"/>
+              </svg>
+            </div>
+            <h2>Registration Successful!</h2>
+            <p>Your NGO account has been created and is ready to use.</p>
+            <div class="cred-card" id="cred-card"></div>
+            <button type="button" class="btn-primary" onclick="proceedToSignIn()">
+              <span>Proceed to Sign In</span>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="switch-note" id="reg-switch-note">Already registered? <a href="#" onclick="switchTab('signin');return false;">Sign in →</a></p>
+      </section>
+
+      <p class="portal-copyright">© 2025 NexaGrant &nbsp;·&nbsp; <a href="#" onclick="return false">Privacy</a> &nbsp;·&nbsp; <a href="#" onclick="return false">Terms</a></p>
+    </main>
+  </div>
+
+  <!-- ═══ FORGOT PASSWORD MODAL ═══ -->
+  <div class="modal-backdrop hidden" id="modal-forgot" onclick="handleModalClick(event)">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" onclick="closeForgot()" aria-label="Close dialog">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <h3 id="modal-title">Reset Password</h3>
+      <p>Enter your registered email address. We'll send you a secure reset link.</p>
+      <div class="msg-box" id="forgot-msg" role="alert" aria-live="polite"></div>
+      <div class="field">
+        <label for="forgot-email">Registered Email</label>
+        <div class="input-wrap">
+          <span class="inp-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8l8 5 8-5" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <input type="text" id="forgot-email" class="inp" placeholder="admin@yourorg.org" autocomplete="email" />
+        </div>
+      </div>
+      <button type="button" class="btn-primary" onclick="doForgot()">
+        <span>Send Reset Link</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ AI SUPPORT CHAT ═══ -->
+  <button class="chat-bubble" id="chat-bubble" onclick="toggleChat()" aria-label="Open AI Support Chat" aria-expanded="false">
+    <div class="chat-bubble-icon">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="chat-bubble-text">
+      <span>Need help?</span>
+      <small>Ask our AI</small>
+    </div>
+    <span class="chat-badge">AI</span>
+  </button>
+
+  <div class="chat-panel hidden" id="chat-panel" role="dialog" aria-label="AI Support Chat">
+    <header class="chat-head">
+      <div class="chat-head-left">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="online-dot"></span>
+        </div>
+        <div>
+          <strong>NexaGrant Support</strong>
+          <small>AI Assistant · Online</small>
+        </div>
+      </div>
+      <button type="button" onclick="toggleChat()" aria-label="Close chat">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <div class="chat-body" id="chat-body">
+      <div class="chat-msg bot">
+        <p>Hello! 👋 I'm the NexaGrant AI assistant. I can help with registration, login issues, or connect you with our admin team.</p>
+      </div>
+      <div class="quick-chips" id="quick-chips">
+        <button type="button" onclick="quickReply('How do I register my NGO?')">How to register?</button>
+        <button type="button" onclick="quickReply('I forgot my password')">Forgot password</button>
+        <button type="button" onclick="quickReply('I need to contact an admin')">Contact admin</button>
+        <button type="button" onclick="quickReply('What documents are needed for registration?')">Required docs</button>
+      </div>
+    </div>
+
+    <div class="chat-foot">
+      <input type="text" id="chat-inp" class="chat-inp" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendChat()" aria-label="Chat message input" />
+      <button type="button" class="chat-send" onclick="sendChat()" aria-label="Send message">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M17.5 10L2.5 3.5 5.5 10l-3 6.5L17.5 10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
